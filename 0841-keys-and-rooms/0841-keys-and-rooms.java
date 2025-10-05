@@ -3,23 +3,18 @@ class Solution {
         int n = adj.size();
         boolean[] vis = new boolean[n];
         vis[0] = true;
-        bfs(0,vis,adj);
+        dfs(0,vis,adj);
         for(boolean ele : vis){
             if(ele == false)return false;
         }
         return true;
     }
-    public static void bfs(int st, boolean[] vis,List<List<Integer>> adj){
+    public static void dfs(int st, boolean[] vis,List<List<Integer>> adj){
         int n = adj.size();
-        Queue<Integer> q = new LinkedList<>();
-        q.add(st);
-        while(q.size() > 0){
-            int front = q.remove();
-            for(int ele : adj.get(front)){
-                if(!vis[ele]){
-                    vis[ele] = true;
-                    q.add(ele);
-                }
+        vis[st] = true;
+        for(int ele: adj.get(st)){
+            if(!vis[ele]){
+                dfs(ele,vis,adj);
             }
         }
         
