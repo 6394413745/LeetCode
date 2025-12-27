@@ -12,18 +12,14 @@ class Solution {
     public ListNode sortList(ListNode head) {
         List<Integer> list = new ArrayList<>();
 
-        // list → array
-        while (head != null) {
+        while(head != null){
             list.add(head.val);
             head = head.next;
         }
-
         Collections.sort(list);
-
-        // array → list
         ListNode dummy = new ListNode(0);
         ListNode curr = dummy;
-        for (int val : list) {
+        for(int  val:list){
             curr.next = new ListNode(val);
             curr = curr.next;
         }
